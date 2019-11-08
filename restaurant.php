@@ -1,10 +1,4 @@
 <script>
-  $(function() {
-  
-
- });
-</script>
-<script>
 
     function show(id){
     
@@ -86,10 +80,12 @@
 ?>
 
 <div class="card  text-center">
-        
+  <div>
+          
+             
     <?php if(isset($Addrval)){?>
                         
-    <img class="card-img " src="img/<?php echo $cityimg[$Addrval];?>" >
+    <img class="card-img up-img-body" src="img/<?php echo $cityimg[$Addrval];?>" >
                 
 
     <?php }?>    
@@ -97,7 +93,7 @@
        
         <img class="avatar rounded-circle gradient-card-header purple-gradient img-thumbnail"  src="<?php echo $row['Picture1']!=""?$row['Picture1']:'img/bg2.png';?>" onerror="this.src='img/bg2.png'">
     </div>
-
+  </div> 
     
 
     <div  class="card-header d-flex justify-content-center align-items-center">

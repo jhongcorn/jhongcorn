@@ -1,4 +1,5 @@
 <?php
+//修改訂房資料
 	if (isset($_POST['Change_Order'])) {
 		if("Change_Order"==base64_decode(str_replace(" ","+",$_POST['Change_Order']))){
 			require "mysqlconn.php";
@@ -13,7 +14,7 @@
 	}else{
 		header('Location: index.php');
 	}
-
+//刪除訂房資料
 	if(isset($_POST['del_Order'])){
 		if("del_Order"==base64_decode(str_replace(" ","+",$_POST['del_Order']))){
 			require "mysqlconn.php";

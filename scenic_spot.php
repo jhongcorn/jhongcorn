@@ -1,10 +1,4 @@
 <script>
-  $(function() {
-  
-
- });
-</script>
-<script>
 
     function show(id){
     
@@ -86,17 +80,17 @@
 ?>
 
 <div class="card  text-center">
-        
+  <div>
+
     <?php if(isset($Addrval)){?>
                         
-    <img class="card-img " src="img/<?php echo $cityimg[$Addrval];?>" >
-                
+    <img class="card-img up-img-body" src="img/<?php echo $cityimg[$Addrval];?>" >
 
     <?php }?>    
     <div class=" up-img card-img-overlay">    
         <img class="avatar rounded-circle gradient-card-header purple-gradient img-thumbnail"  src="<?php echo $row['Picture1']!=""?$row['Picture1']:'img/bg1.png';?>" onerror="this.src='img/bg1.png'">
     </div>
-
+  </div> 
     <div  class="card-header d-flex justify-content-center align-items-center">
         <p class="text-primary justify-content-center align-items-center" style="font-size: 1vw;">
         </p>
@@ -110,7 +104,7 @@
         </div>
     </div>
     <?php if($row['Picture1'] && $row['Picture2']){?>
-    <div class="bd-example">
+    <div class="bd-example p-3">
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
              <?php 

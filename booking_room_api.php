@@ -1,15 +1,16 @@
 <?php
+	//旅館訂單api
 	require "mysqlconn.php";
 	$sql="SELECT * FROM `customer` WHERE `OAuth_Id`='".$_POST['user_id']."'";
 	$userresault=sqldatabaselink($link,$sql);
 	$user_Customer_Id="";
 	$user_OAuth_Id="";
-	if(count($userresault)>0){
+	if(count($userresault)>0){//抓取ID
 		foreach($userresault as $row){
 			$user_Customer_Id=$row['Customer_Id'];
 			$user_OAuth_Id=$row['OAuth_Id'];
 		}
-
+		//判斷是否已有訂房紀錄
 		$sql="SELECT * FROM `room_order` WHERE `customer_Id`='".$user_Customer_Id."' AND `OAuth_Id`='".$user_OAuth_Id."'"; 
 		$bookingresault=sqldatabaselink($link,$sql);
 		if(count($bookingresault)>0){
@@ -40,7 +41,7 @@
 		$sql="INSERT INTO `room_order` ( `hotel_Id`, `customer_Id`, `OAuth_Id`, `Checkin_date`, `Checkout_date`, `adult`, `child`, `nights`, `room`, `times`) VALUES ( '".$_POST['hotel_id']."', '".$user_Customer_Id."', '".$user_OAuth_Id."', '".$_POST['Checkin_date']."', '".$_POST['Checkout_date']."', '".$_POST['adult']."', '".$_POST['child']."', '".$_POST['nights']."', '".$_POST['room']."',  '". date("Y-m-d H:i:s")."')";
 		return $sql;
 	}
-
+	//新訂房入住時間是否在已訂房時間區間內
 	function prDates($start, $end,$new_start) { 
 
 	    $dt_start = strtotime($start);

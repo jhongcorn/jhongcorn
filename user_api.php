@@ -1,4 +1,5 @@
 <?php
+	//會員註冊
 	require "mysqlconn.php";
 
 	if(isset($_POST['registered'])){
@@ -19,8 +20,8 @@
 		$_SESSION['OAuth_Id']=$OAuth_Id;
 		$_SESSION['OAuth']='this';	
 		echo $_SESSION['OAuth_Id'];	
-
-	 }else if(isset($_POST['login'])){
+	
+	 }else if(isset($_POST['login'])){	//會員登入
 	 	$Email= $_POST["login_Email"];
 	 	$Password= $_POST["login_password"];
 	 	$sql="SELECT * FROM `customer` WHERE `Email`='".$Email."' AND `password`='".$Password."' AND OAuth='this'";

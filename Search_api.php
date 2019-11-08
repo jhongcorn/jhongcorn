@@ -1,8 +1,9 @@
 <?php
+//針對sql table search 
 	if(isset($_POST['Search_text'])){
 		header("Content-Type:text/html;charset=utf8");
 		require 'mysqlconn.php';
-		$Search_text=mb_ereg_replace("台","臺",$_POST['Search_text']);
+		$Search_text=mb_ereg_replace("台","臺",$_POST['Search_text']);//強迫當有輸入台時 改為臺 
 		$sql_restaurant=sqltable('`restaurant`',$Search_text);
 		$resault_restaurant=sqldatabaselink($link,$sql_restaurant);
 		$json_restaurant=array();

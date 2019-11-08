@@ -625,7 +625,7 @@
         
     <?php if(isset($Addrval)){?>
                         
-    <img class="card-img " src="img/<?php echo $cityimg[$Addrval];?>" >
+    <img class="card-img up-img-body" src="img/<?php echo $cityimg[$Addrval];?>" >
                 
 
     <?php }?>    

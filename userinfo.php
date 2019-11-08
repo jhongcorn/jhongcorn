@@ -250,7 +250,7 @@
 			}
 		</style>
 	</head>
-	<body class="container">
+	<body class="container border border-info">
 
 
 		<?php require "modal_error.php";?>
@@ -270,35 +270,38 @@
 					
 				
 		?>
-			
+		<h5 class="card-header text-center">會員資料</h5>	
 		<div class="card " > 
-							
-			<?php if(isset($Addrval)){?>
-					
-			<img class="card-img " src="img/<?php echo $cityimg[$Addrval];?>" >
 
-			<?php }else{
-
-				echo '<div class="bg-info " style="height:39vw;"></div>';
-			}
-
-			?>
-	        <div class=" text-center up-img" >
-	        	<?php if($row['picture']){ ?>
-	        	<img class="avatar rounded-circle img-thumbnail" src="<?php echo $row['picture'];?>" >
-	        	<?php }else{
-	        		echo '<div class="mx-auto avatar rounded-circle img-thumbnail p-1"><i class="fas fa-user "style="font-size:15vw;"></i></div>';
-	        	} ?>
-	        	<form action="upload/upload.php" method="post"  id="photoform" name="photoform" enctype="multipart/form-data">
-		        	<label class="upload_cover avatar rounded-circle">
-						<input id="userinfo_Customer_picture" name="userinfo_Customer_picture" type="file" onchange="upload_photo(this.id);">
-						<span class="upload_icon"><i class="fas fa-camera text-white"></i></span>
-					</label>
-	        	</form>
-					          	
-	        </div>
-			<span class="userinfo_Customer_picture_span"></span>	
+			<div>		
 				
+				<?php if(isset($Addrval)){?>
+						
+				<img class="card-img up-img-body" src="img/<?php echo $cityimg[$Addrval];?>" >
+
+				<?php }else{
+
+					echo '<div class="bg-info " style="height:39vw;"></div>';
+				}
+
+				?>
+		        <div class=" text-center up-img" >
+		        	<?php if($row['picture']){ ?>
+		        	<img class="avatar rounded-circle img-thumbnail" src="<?php echo $row['picture'];?>" >
+		        	<?php }else{
+		        		echo '<div class="mx-auto avatar rounded-circle img-thumbnail p-1"><i class="fas fa-user "style="font-size:15vw;"></i></div>';
+		        	} ?>
+		        	<form action="upload/upload.php" method="post"  id="photoform" name="photoform" enctype="multipart/form-data">
+			        	<label class="upload_cover avatar rounded-circle">
+							<input id="userinfo_Customer_picture" name="userinfo_Customer_picture" type="file" onchange="upload_photo(this.id);">
+							<span class="upload_icon"><i class="fas fa-camera text-white"></i></span>
+						</label>
+		        	</form>
+						          	
+		        </div>
+	    	
+				<span class="userinfo_Customer_picture_span"></span>	
+			</div>	
 
 			
 			<div class="card-body">

@@ -3,8 +3,8 @@
     session_start();
 	
 	$link=sqlconnlink("jhongcorn");
-
-
+	//GET動態對sql查詢  
+		$indexh4="旅館";
 		$citylink='hotel_ch';
 		$dbtable='hotel_ch';
 		$pagetext="間民宿";
@@ -18,6 +18,7 @@
 		$errorimg="bg1.png";
 		$table_Id='scenic_Id';
 		$tablelink='scenic_spot_Id';
+		$indexh4="景點";
 	}else if(isset($_GET['hotel_ch'])){
 		$citylink='hotel_ch';
 		$dbtable='hotel_ch';
@@ -25,6 +26,7 @@
 		$errorimg="bg.png";
 		$table_Id='hotel_Id';
 		$tablelink='hotel_ch_Id';
+		$indexh4="旅館";
 	}else if(isset($_GET['restaurant'])){
 		$citylink='restaurant';
 		$dbtable='restaurant';
@@ -32,6 +34,7 @@
 		$errorimg="bg2.png";
 		$table_Id='restaurant_Id';
 		$tablelink='restaurant_Id';
+		$indexh4="店家";
 	}
 
 	function sqlconnlink($dbname){

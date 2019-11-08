@@ -118,9 +118,10 @@
 		  </div>
 		</div>
 		<!--Modal: Login with Avatar Form-->		
-	  	<div class="container">
+	  	<div class="container border border-info">
 	  		  <?php  require "header.php"; ?>
-	  		 <div class="row ">
+			<h4 class="card-header text-center ">訂房資訊</h4>
+	  		 <div class="row">
 			<?php
 				
 			$sqlstr="SELECT * FROM `room_order` WHERE  `OAuth_Id`='".$_SESSION['OAuth_Id']."'"; 
@@ -146,7 +147,7 @@
 
 
 				if(count($bookingorder)>0){
-				
+					
 					foreach($bookingorder as $row){
 						$sql="SELECT * FROM hotel_ch WHERE hotel_Id='".$row['hotel_Id']."'";
 						$hotelorder=sqldatabaselink($link,$sql);
@@ -155,8 +156,8 @@
 						
 			?>
 
-
-
+	
+				
 				<div class="col-md-6 col-sm-12 my-3">
 					<div class="card" id="order<?php echo $value['hotel_Id'].$row['Order_Id'];?>" adult="<?php echo $row['adult'];?>" child="<?php echo $row['child'];?>" room="<?php echo $row['room'];?>" order-id="<?php echo $row['Order_Id']?>" hotel-id="<?php echo $value['hotel_Id']?>" oauth-id="<?php echo $row['OAuth_Id']?>" customer-id="<?php echo $row['customer_Id']?>">
 
@@ -194,8 +195,8 @@
 			?>
 			</div>
 		
-				<nav  aria-label="Page navigation example" class="d-flex">
-				  <ul class="mr-auto ml-auto pagination">
+				<nav  aria-label="Page navigation example" class="d-flex card-footer">
+				  <ul class="mr-auto ml-auto pagination my-auto">
 				    <?php if ($pageNum > 0) { ?>
 				    <li class="page-item">
 				        <a href="?pageNum=<?php echo base64_encode("0");?>" class="page-link"><i class=" fas fa-angle-double-left text-info"></i></a></li>
@@ -209,6 +210,7 @@
 				    <li class="page-item"><a href="?pageNum=<?php echo base64_encode($totalPages);?>" class="page-link"><i class="fas fa-angle-double-right text-info"></i></a></li><?php }?>
 				  </ul>
 				</nav>		
+			<?php require 'footer.php';?>
 		</div>
 	</body>
 </html>
@@ -217,7 +219,7 @@
 	}else{
 		header('Location: index.php');
 	}
-
+	//判斷天數相差幾天
 	function prDates($start, $end) { 
 		$dt_bind=strtotime(date('Y-M-D'));
 		$dt_start = strtotime($start);

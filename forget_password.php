@@ -26,7 +26,7 @@
 
     $( "#forget_birthday" ).datepicker({
       yearRange:"-100:+0",
-       dateFormat: 'yy-mm-dd',
+      dateFormat: 'yy-mm-dd',
       changeMonth:true,
       changeYear:true,
       maxDate:new Date(),

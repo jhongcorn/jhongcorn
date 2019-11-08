@@ -8,11 +8,13 @@
  }
   
 }
-</style>
-
-
+</style>  
+ <?php
+  echo '<p class="text-center mb-5">您想查詢哪個縣市的'.$indexh4.'</p>';
+  ?>
   <div align="center" class="row">
   <?php
+
     if(isset($_GET[$dbtable])){
       $citylink_get=$_GET[$dbtable];
     }else{

@@ -1,11 +1,16 @@
 <style>
-  table td{
-    font-size:3vh;
-  }
-  .collapse_Name{
-    top:35%;
-  }
+.collapse_Name{
+top:115px;
+}
+.collapse_Name h3{
+font-size: 30px;
+}
 
+@media (max-width: 540px){
+  .collapse_Name h3{
+    font-size: 20px;
+  }
+    }
 </style>
 <?php 
 
@@ -49,7 +54,7 @@
       <div class="card  border border-info rounded-pill ">          
           <a data-toggle="collapse" data-target="#collapse<?php echo $value[$table_Id];?>" aria-expanded="false" aria-controls="collapse<?php echo $value[$table_Id];?>">
             <img class=" card-img  rounded-pill cityimg"  src="<?php echo $value['Picture1']!=""?$value['Picture1']:'img/'.$errorimg;?>" onerror="this.src='img/<?php echo $errorimg;?>'">
-            <div class="card-img-overlay collapse_Name">
+            <div class="card-img-overlay collapse_Name ">
               <h3  class="card-title  h3 text-white" style="text-shadow:2px 2px 2px #000000,-2px -2px 2px #000000;"><?php echo $value['Name'];?></h3>
             </div>
           </a>

@@ -1,4 +1,5 @@
 <?php
+//判斷email是否存在
 	require "mysqlconn.php";
 	
 	$sql="SELECT * FROM `customer` WHERE `Email`='".$_POST['email']."' AND OAuth='this'";
