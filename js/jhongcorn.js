@@ -1,3 +1,4 @@
+	//中華郵政addr json
 	var citydata=function(){
 		var cityjson=null;
 		$.ajax({
@@ -11,19 +12,32 @@
 		return cityjson;
 	}();
 
+	//正規化
+	function regularize_bind(id,value,value_bind){
+		var email={bind:/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/,text:'Email格式錯誤'};
+		var password={bind:/^(?=.*[^a-zA-Z0-9])(?=.*[A-Z,a-z])(?=.*\d).{8,12}$/,text:'密碼格式錯誤'};
+		var name={bind:/^([\u4e00-\u9fa5A-Za-z]*)$/,'text':'只能輸入中文或英文'};
+		var phone={bind:/^09[0-9]\d{7}$|^0(2|3|4|5|6|7|8)\d{0,2}\d{6,8}$/,text:'請輸入正常電話格式'};
+		var addr={bind:/^([1-9][0-9]*)$/,'text':'只能輸入數字'};
+		
+		var bind={email:email,password:password,name:name,phone:phone,addr:addr};
 
-	function emailbind(id,value){
-		var regemail=/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/;
-		if(regemail.test(value)){
+		if(bind[value_bind]['bind'].test(value)){
 			$("#"+id).removeClass('border border-danger');
 			return true;
 		}else{
 			$("#"+id).val("");
 			$("#"+id).addClass('border border-danger');
 			$('#modalConfirmDelete').modal('show');
-			$('#modalConfirmDelete span').html('Email格式錯誤');
+			$('#modalConfirmDelete span').html(bind[value_bind]['text']);
 			return false;
 			} 
+
+	}
+
+	function emailbind(id,value){
+		return regularize_bind(id,value,'email');
+		
 	}
 
 	function repassword(repwid){
@@ -43,68 +57,27 @@
 	}
 
 	function regpassword(id,value){
-		var regpw=/^(?=.*[^a-zA-Z0-9])(?=.*[A-Z,a-z])(?=.*\d).{8,12}$/;
-		
-		if(regpw.test(value)){
-			$("#"+id).removeClass('border border-danger');
-			return true;
-		}else{
-			$("#"+id).val("");
-			$("#"+id).addClass('border border-danger');
-			$('#modalConfirmDelete').modal('show');
-			$('#modalConfirmDelete span').html('格式錯誤');
-			return false;
-			} 
+		return regularize_bind(id,value,'password');
 	}
 
 	function namebind(id,value){
-		var regname=/^([\u4e00-\u9fa5A-Za-z]*)$/;
-
-		if(regname.test(value)){
-			$("#"+id).removeClass('border border-danger');
-			return true;
-		}else{
-			$("#"+id).val("");
-			$("#"+id).addClass('border border-danger');
-			$('#modalConfirmDelete').modal('show');
-			$('#modalConfirmDelete span').html('只能輸入中文或英文');
-			return false;
-			} 
+		return regularize_bind(id,value,'name');
 	}
 
 	function Phonebind(id,value){
 	
-   		var regPhone = /^09[0-9]\d{7}$|^0(2|3|4|5|6|7|8)\d{0,2}\d{6,8}$/;
-
-		if(regPhone.test(value)){
-			$("#"+id).removeClass('border border-danger');
-			return true;
-		}else{
-			$("#"+id).val("");
-			$("#"+id).addClass('border border-danger');
-			$('#modalConfirmDelete').modal('show');
-			$('#modalConfirmDelete span').html('請輸入正常電話格式');
-			return false;
-			} 
+   		return regularize_bind(id,value,'phone');
 
 	}
 
 	function regAddr(id,value){
-		var rgeAddr=/^([1-9][0-9]*)$/;
-
-		if(rgeAddr.test(value)){
-			$("#"+id).removeClass('border border-danger');
-			return true;
-		}else{
-			$("#"+id).val("");
-			$("#"+id).addClass('border border-danger');
-			$('#modalConfirmDelete').modal('show');
-			$('#modalConfirmDelete span').html('只能輸入數字');
-			return false;
-			} 
+		return regularize_bind(id,value,'addr');
 		
 	}
 
+
+
+	//動態取得select資料
 	function map(id){
 
 		for(city=0;city<citydata.length;city++){
